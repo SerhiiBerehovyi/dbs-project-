@@ -1,5 +1,5 @@
 CREATE TABLE aol_user (
-    id SERIAL PRIMARY KEY
+    id INTEGER PRIMARY KEY
 );
 
 CREATE TABLE aol_query (
