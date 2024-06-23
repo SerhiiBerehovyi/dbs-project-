@@ -1,24 +1,15 @@
-CREATE TABLE aol_user (
-    id INTEGER PRIMARY KEY
+CREATE TABLE url (
+    id SERIAL PRIMARY KEY,
+    url TEXT NOT NULL
 );
 
 CREATE TABLE aol_query (
-    id SERIAL PRIMARY KEY,
-    aol_user_id INTEGER REFERENCES aol_user(id),
+    user_id INTEGER,
     timestamp TIMESTAMP NOT NULL,
-    text TEXT NOT NULL
-);
-
-CREATE TABLE url (
-	id SERIAL PRIMARY KEY,
-	url TEXT NOT NULL
-);
-
-CREATE TABLE aol_query_url (
-    aol_query_id INTEGER REFERENCES aol_query(id),
-    url_id INTEGER REFERENCES url(id),
+    text TEXT NOT NULL,
     page_rank INTEGER,
-    PRIMARY KEY (aol_query_id, url_id)
+    url_id INTEGER REFERENCES url(id),
+	PRIMARY KEY (user_id, timestamp)
 );
 
 CREATE TABLE search_term (
