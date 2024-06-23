@@ -10,7 +10,8 @@ CREATE TABLE aol_query (
 );
 
 CREATE TABLE url (
-    id SERIAL PRIMARY KEY
+	id SERIAL PRIMARY KEY,
+	url TEXT NOT NULL
 );
 
 CREATE TABLE aol_query_url (
@@ -25,15 +26,15 @@ CREATE TABLE search_term (
     text TEXT NOT NULL
 );
 
+CREATE TABLE theme_type (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(255) NOT NULL
+);
+
 CREATE TABLE plot_theme (
     id SERIAL PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
     theme_type_id INTEGER REFERENCES theme_type(id)
-);
-
-CREATE TABLE theme_type (
-    id SERIAL PRIMARY KEY,
-    name VARCHAR(255) NOT NULL
 );
 
 CREATE TABLE location (
@@ -88,7 +89,7 @@ CREATE TABLE search_term_location (
 
 CREATE TABLE search_term_cast (
     search_term_id INTEGER REFERENCES search_term(id),
-    cast_id INTEGER REFERENCES cast(id),
+    cast_id INTEGER REFERENCES film_cast(id),
     PRIMARY KEY (search_term_id, cast_id)
 );
 
