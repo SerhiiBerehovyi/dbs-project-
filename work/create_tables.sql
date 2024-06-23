@@ -46,7 +46,7 @@ CREATE TABLE organisation (
     name VARCHAR(255) NOT NULL
 );
 
-CREATE TABLE cast (
+CREATE TABLE film_cast (
     id SERIAL PRIMARY KEY,
     role VARCHAR(255) NOT NULL,
     name VARCHAR(255) NOT NULL
