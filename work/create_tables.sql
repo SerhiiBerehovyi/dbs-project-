@@ -4,12 +4,12 @@ CREATE TABLE url (
 );
 
 CREATE TABLE aol_query (
-    user_id INTEGER,
-    timestamp TIMESTAMP NOT NULL,
-    text TEXT NOT NULL,
+	id SERIAL PRIMARY KEY,
+    user_id INTEGER NOT NULL,
+    timestamp TIMESTAMP,
+    text TEXT,
     page_rank INTEGER,
-    url_id INTEGER REFERENCES url(id),
-	PRIMARY KEY (user_id, timestamp)
+    url_id INTEGER REFERENCES url(id)
 );
 
 CREATE TABLE search_term (
