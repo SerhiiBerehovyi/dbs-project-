@@ -1,23 +1,15 @@
-CREATE TABLE aol_user (
-    id SERIAL PRIMARY KEY
+CREATE TABLE url (
+    id SERIAL PRIMARY KEY,
+    url TEXT NOT NULL
 );
 
 CREATE TABLE aol_query (
-    id SERIAL PRIMARY KEY,
-    aol_user_id INTEGER REFERENCES aol_user(id),
-    timestamp TIMESTAMP NOT NULL,
-    text TEXT NOT NULL
-);
-
-CREATE TABLE url (
-    id SERIAL PRIMARY KEY
-);
-
-CREATE TABLE aol_query_url (
-    aol_query_id INTEGER REFERENCES aol_query(id),
-    url_id INTEGER REFERENCES url(id),
+	id SERIAL PRIMARY KEY,
+    user_id INTEGER NOT NULL,
+    timestamp TIMESTAMP,
+    text TEXT,
     page_rank INTEGER,
-    PRIMARY KEY (aol_query_id, url_id)
+    url_id INTEGER REFERENCES url(id)
 );
 
 CREATE TABLE search_term (
@@ -25,15 +17,15 @@ CREATE TABLE search_term (
     text TEXT NOT NULL
 );
 
+CREATE TABLE theme_type (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(255) NOT NULL
+);
+
 CREATE TABLE plot_theme (
     id SERIAL PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
     theme_type_id INTEGER REFERENCES theme_type(id)
-);
-
-CREATE TABLE theme_type (
-    id SERIAL PRIMARY KEY,
-    name VARCHAR(255) NOT NULL
 );
 
 CREATE TABLE location (
@@ -46,7 +38,7 @@ CREATE TABLE organisation (
     name VARCHAR(255) NOT NULL
 );
 
-CREATE TABLE cast (
+CREATE TABLE film_cast (
     id SERIAL PRIMARY KEY,
     role VARCHAR(255) NOT NULL,
     name VARCHAR(255) NOT NULL
@@ -88,7 +80,7 @@ CREATE TABLE search_term_location (
 
 CREATE TABLE search_term_cast (
     search_term_id INTEGER REFERENCES search_term(id),
-    cast_id INTEGER REFERENCES cast(id),
+    cast_id INTEGER REFERENCES film_cast(id),
     PRIMARY KEY (search_term_id, cast_id)
 );
 
