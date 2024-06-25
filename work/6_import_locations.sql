@@ -1,0 +1,10 @@
+INSERT INTO location (name) VALUES ('Louvre Museum, Paris');
+INSERT INTO location (name) VALUES ('Rosslyn Chapel, Scotland');
+INSERT INTO location (name) VALUES ('Temple Church, London');
+INSERT INTO location (name) VALUES ('Château Villette, France');
+INSERT INTO location (name) VALUES ('Lincoln Cathedral, England');
+INSERT INTO location (name) VALUES ('Westminster Abbey, London');
+INSERT INTO location (name) VALUES ('Saint-Sulpice, Paris');
+INSERT INTO location (name) VALUES ('Salisbury Cathedral, England');
+INSERT INTO location (name) VALUES ('King\`s College London, England');
+INSERT INTO location (name) VALUES ('Fleet Street, London');
