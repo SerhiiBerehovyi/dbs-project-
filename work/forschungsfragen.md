@@ -1,4 +1,4 @@
-1) *Wie hat sich das Interesse an den Schauspielern des Films vor und nach Veröffentlichung verändert?*
+1) *Wie hat sich das Interesse an den Mitwirkenden des Films vor und nach Veröffentlichung verändert?*
 
 Erhofftes Ergebnis: Plot mit Anzahl der Suchanfragen pro Mitwirkendem, bezogen auf das erste Halbjahr 2006
 
