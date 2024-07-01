@@ -50,7 +50,7 @@ Externe Datenquellen: Selbst aggregierte Tabelle mit Themen aus dem Film
 
 12) *Welche Kunstwerke, Symbole oder Orte (=Themen) aus dem Film haben die meisten Suchanfragen hervorgebracht, gruppiert nach Häufigkeit?*
 
-Erhofftes Ergebis: Balkendiagramm mit den 10 am häufigsten gesuchten Themen aus dem Film und deren Anzahl von Anfragen im untersuchten Zeitraum
+Erhofftes Ergebnis: Balkendiagramm mit den 10 am häufigsten gesuchten Themen aus dem Film und deren Anzahl von Anfragen im untersuchten Zeitraum
 
 Externe Datenquellen: Selbst aggregierte Tabelle mit Themen aus dem Film
  

@@ -36,16 +36,17 @@ CREATE TABLE location (
 CREATE TABLE organisation (
     id SERIAL PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
-	country VARCHAR(255),
-	founded TIMESTAMP,
-	ended TIMESTAMP
+    country VARCHAR(255),
+    founded TIMESTAMP,
+    ended TIMESTAMP,
+    in_film BOOLEAN NOT NULL
 );
 
 CREATE TABLE film_cast (
     id SERIAL PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
     work_role VARCHAR(255) NOT NULL,
-	film_role VARCHAR(255) NOT NULL
+	film_role VARCHAR(255)
 );
 
 CREATE TABLE visitors (
