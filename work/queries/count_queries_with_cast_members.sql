@@ -1,10 +1,9 @@
 select 
 	fc.name, 
 	count(q.text) as cnt,
-	extract(month from q.timestamp) as mm,
-	extract(day from q.timestamp) as dd
+	q.timestamp::date as d
 
-from 
+from
 	aol_query as q
 
 join
@@ -13,13 +12,9 @@ on
 	q.text LIKE '%' || lower(fc.name) || '%'
 
 group by
-	fc.name, 
-	mm,
-	dd
+	fc.name,
+	d
 
-order by 
+order by
 	fc.name asc,
-	mm asc,
-	dd asc
-
---LIMIT 10
+	d asc
