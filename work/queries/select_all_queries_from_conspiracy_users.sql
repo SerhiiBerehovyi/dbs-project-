@@ -9,7 +9,8 @@ join
 join 
 	search_term_organisation as sto 
 	on st.id = sto.search_term_id
-join organisation as org 
+join 
+	organisation as org 
 	on sto.organisation_id = org.id
 	
 where 
