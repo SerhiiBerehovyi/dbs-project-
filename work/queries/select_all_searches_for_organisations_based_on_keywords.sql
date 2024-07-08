@@ -1,9 +1,20 @@
-SELECT DISTINCT aq.*
-FROM aol_query AS aq
-JOIN search_term AS st ON aq.text LIKE '% ' || st.text || ' %'
-    OR aq.text LIKE st.text || ' %'
-    OR aq.text LIKE '% ' || st.text
-    OR aq.text = st.text
-JOIN search_term_organisation AS sto ON st.id = sto.search_term_id
-JOIN organisation AS org ON sto.organisation_id = org.id
-WHERE org.in_film = TRUE;
+select distinct 
+	aq.*
+from 
+	aol_query as aq
+	
+join 
+	search_term as st 
+	on aq.text like '% ' || st.text || ' %'
+    or aq.text like st.text || ' %'
+    or aq.text like '% ' || st.text
+    or aq.text = st.text
+join 
+	search_term_organisation as sto 
+	on st.id = sto.search_term_id
+join 
+	organisation as org 
+	on sto.organisation_id = org.id
+	
+where 
+	org.in_film = TRUE;

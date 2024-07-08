@@ -1,28 +1,52 @@
-WITH UsersWhoSearchedForOrgsInFilm AS (
-    SELECT aq.user_id, MIN(aq.timestamp) as FirstSearchForOrgInFilm
-    FROM aol_query AS aq
-    JOIN search_term AS st ON aq.text LIKE '% ' || st.text || ' %'
-        OR aq.text LIKE st.text || ' %'
-        OR aq.text LIKE '% ' || st.text
-        OR aq.text = st.text
-    JOIN search_term_organisation AS sto ON st.id = sto.search_term_id
-    JOIN organisation AS org ON sto.organisation_id = org.id
-    WHERE org.in_film = TRUE
-    GROUP BY aq.user_id
+with UsersWhoSearchedForOrgsInFilm as (
+    select 
+		aq.user_id, 
+		min(aq.timestamp) as FirstSearchForOrgInFilm
+    from 
+		aol_query as aq
+    join 
+		search_term as st 
+		on aq.text like '% ' || st.text || ' %'
+        or aq.text like st.text || ' %'
+        or aq.text like '% ' || st.text
+        or aq.text = st.text
+    join search_term_organisation as sto 
+		on st.id = sto.search_term_id
+    join organisation as org 
+		on sto.organisation_id = org.id
+    where 
+		org.in_film = TRUE
+    group by 
+		aq.user_id
 ),
-UsersWhoSearchedForOrgsNotInFilm AS (
-    SELECT aq.user_id, MIN(aq.timestamp) as FirstSearchForOrgNotInFilm
-    FROM aol_query AS aq
-    JOIN search_term st ON aq.text LIKE '% ' || st.text || ' %'
-        OR aq.text LIKE st.text || ' %'
-        OR aq.text LIKE '% ' || st.text
-        OR aq.text = st.text
-    JOIN search_term_organisation AS sto ON st.id = sto.search_term_id
-    JOIN organisation org ON sto.organisation_id = org.id
-    WHERE org.in_film = FALSE
-    GROUP BY aq.user_id
+UsersWhoSearchedForOrgsNotInFilm as (
+    select 
+		aq.user_id, 
+		min(aq.timestamp) as FirstSearchForOrgNotInFilm
+    from 
+		aol_query as aq
+    join 
+		search_term as st on aq.text like '% ' || st.text || ' %'
+        or aq.text like st.text || ' %'
+        or aq.text like '% ' || st.text
+        or aq.text = st.text
+    join 
+		search_term_organisation as sto 
+		on st.id = sto.search_term_id
+    join organisation org 
+		on sto.organisation_id = org.id
+    where 
+		org.in_film = FALSE
+    group by 
+		aq.user_id
 )
-SELECT oif.user_id
-FROM UsersWhoSearchedForOrgsInFilm AS oif
-JOIN UsersWhoSearchedForOrgsNotInFilm AS onif ON oif.user_id = onif.user_id
-WHERE oif.FirstSearchForOrgInFilm < onif.FirstSearchForOrgNotInFilm;
+	
+select 
+	oif.user_id
+from 
+	UsersWhoSearchedForOrgsInFilm as oif
+join 
+	UsersWhoSearchedForOrgsNotInFilm as onif on oif.user_id = onif.user_id
+where 
+	oif.FirstSearchForOrgInFilm < onif.FirstSearchForOrgNotInFilm;
+
