@@ -19,7 +19,6 @@ aol_query_url(
 \f0\b0 , page_rank)\
 \
 search_term(\ul id\ulnone , text) \
-// keine FK-Beziehung zu aol_query, Beziehung wird dynamisch per Vergleich hergestellt\
 \
 plot_theme(\ul id\ulnone , name, 
 \f1\b theme_type_id
@@ -29,9 +28,9 @@ theme_type(\ul id\ulnone , name)\
 \
 location(\ul id\ulnone , name)\
 \
-organisation(\ul id\ulnone , name)\
+organisation(\ul id\ulnone , name, country, founded, ended, in_film)\
 \
-film_cast(\ul id\ulnone , role, name)\
+film_cast(\ul id\ulnone , name, work_role, film_role)\
 \
 visitors(
 \f1\b \ul location_id
