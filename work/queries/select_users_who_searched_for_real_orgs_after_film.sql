@@ -1,7 +1,7 @@
 with UsersWhoSearchedForOrgsInFilm as (
     select 
 		aq.user_id, 
-		min(aq.timestamp) as FirstSearchForOrgInFilm
+		min(aq.timestamp) as first_search
     from 
 		aol_query as aq
     join 
@@ -22,7 +22,7 @@ with UsersWhoSearchedForOrgsInFilm as (
 UsersWhoSearchedForOrgsNotInFilm as (
     select 
 		aq.user_id, 
-		min(aq.timestamp) as FirstSearchForOrgNotInFilm
+		min(aq.timestamp) as first_search
     from 
 		aol_query as aq
     join 
@@ -46,7 +46,8 @@ select
 from 
 	UsersWhoSearchedForOrgsInFilm as oif
 join 
-	UsersWhoSearchedForOrgsNotInFilm as onif on oif.user_id = onif.user_id
+	UsersWhoSearchedForOrgsNotInFilm as onif 
+	on oif.user_id = onif.user_id
 where 
-	oif.FirstSearchForOrgInFilm < onif.FirstSearchForOrgNotInFilm;
+	oif.first_search < onif.first_search;
 
