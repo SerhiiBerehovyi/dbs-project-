@@ -3,7 +3,8 @@ with FilmRelatedQueries as (
 		aq.user_id, aq.id
     from 
 		aol_query aq
-    join plot_theme as pt 
+    join 
+		plot_theme as pt 
 		on aq.text like '%' || lower(pt.name) || '%'
 ),
 
