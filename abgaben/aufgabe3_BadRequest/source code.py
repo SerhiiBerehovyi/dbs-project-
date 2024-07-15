@@ -9,12 +9,12 @@ conn = psycopg2.connect(
     host="localhost",
     database="postgres",
     user="serhii",
-    password="password"
+    password="3244566Rko"
 )
 
 cur = conn.cursor()
 
-with open("../work/queries/count_queries_with_cast_members.sql", 'r') as file:
+with open("count_queries_with_cast_members.sql", 'r') as file:
     sql_script = file.read()
 
 cur.execute(sql_script)
